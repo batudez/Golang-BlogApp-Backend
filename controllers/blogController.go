@@ -30,7 +30,6 @@ func GetBlog(c *gin.Context) {
 
 // SLUGIFY AND CREATE
 func Slugify(title string) string {
-	// Başlığı küçük harfe çevir, boşlukları tire ile değiştir ve özel karakterleri kaldır
 	slug := strings.ToLower(title)
 	slug = strings.ReplaceAll(slug, " ", "-")
 	slug = strings.Map(func(r rune) rune {

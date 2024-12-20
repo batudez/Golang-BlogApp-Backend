@@ -36,7 +36,6 @@ func RequireAuth(c *gin.Context) {
 		return []byte(os.Getenv("SECRETKEY")), nil
 	})
 
-	// Eğer token parsing sırasında bir hata oluşmuşsa yetkilendirmeyi iptal et
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
 			"error": "Invalid token",

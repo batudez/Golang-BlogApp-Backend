@@ -9,10 +9,10 @@ import (
 )
 
 func main() {
-	// Veritabanına bağlan
+	// conntecting to db
 	database.Connect()
 
-	// Router'ı oluştur
+	// Router's
 	r := gin.Default()
 
 	corsConfig := cors.DefaultConfig()
@@ -29,7 +29,7 @@ func main() {
 
 	r.Use(cors.New(corsConfig))
 
-	// Blog CRUD route'ları
+	// Blog CRUD route's
 	r.GET("/blogs", controllers.GetAllBlogs)
 	//r.GET("/blogs/:id", controllers.GetBlog)
 	r.POST("/blogs", middleware.RequireAuth, controllers.CreateBlog)
@@ -41,6 +41,6 @@ func main() {
 	r.POST("/login", controllers.Login)
 	r.GET("/validate", middleware.RequireAuth, controllers.Validate)
 
-	// Sunucuyu başlat
+	// starting server
 	r.Run(":8080")
 }
